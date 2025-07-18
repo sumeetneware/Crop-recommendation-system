@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation Engine</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="floating-element" style="--delay: 0s; --duration: 20s;"></div>
+        <div class="floating-element" style="--delay: -5s; --duration: 25s;"></div>
+        <div class="floating-element" style="--delay: -10s; --duration: 30s;"></div>
+        <div class="floating-element" style="--delay: -15s; --duration: 35s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 20h10"/>
+                            <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.7 4.3-1.4 1-1.1 1.6-2.7 1.7-4.6-2.7.1-4 1-4.9 2z"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <h1>AgriSmart</h1>
+                        <p>Crop Recommendation Engine</p>
+                    </div>
+                </div>
+                <div class="header-stats">
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Farmers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">AI-Powered Crop Selection</h2>
+                    <p class="hero-subtitle">Get personalized crop recommendations based on your soil and climate conditions</p>
+                </div>
+            </section>
+
+            <!-- Form and Results Grid -->
+            <div class="content-grid">
+                <!-- Input Form -->
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3>Soil & Climate Parameters</h3>
+                        <div class="progress-indicator">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+                    
+                    <form id="cropForm" class="form">
+                        <div class="form-grid">
+                            <!-- Soil Parameters -->
+                            <div class="form-section">
+                                <h4 class="section-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="3"/>
+                                        <path d="M12 1v6m0 6v6"/>
+                                        <path d="m21 12-6-3-6 3-6-3"/>
+                                    </svg>
+                                    Soil Nutrients
+                                </h4>
+                                <div class="input-group">
+                                    <label for="nitrogen">Nitrogen (N)</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="nitrogen" name="nitrogen" min="0" max="200" step="1" required>
+                                        <span class="input-unit">kg/ha</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="nitrogen"></div>
+                                        </div>
+                                        <span>200</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="phosphorus">Phosphorus (P)</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="phosphorus" name="phosphorus" min="0" max="150" step="1" required>
+                                        <span class="input-unit">kg/ha</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="phosphorus"></div>
+                                        </div>
+                                        <span>150</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="potassium">Potassium (K)</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="potassium" name="potassium" min="0" max="300" step="1" required>
+                                        <span class="input-unit">kg/ha</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="potassium"></div>
+                                        </div>
+                                        <span>300</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="ph">pH Level</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="ph" name="ph" min="0" max="14" step="0.1" required>
+                                        <span class="input-unit">pH</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="ph"></div>
+                                        </div>
+                                        <span>14</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Climate Parameters -->
+                            <div class="form-section">
+                                <h4 class="section-title">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+                                    </svg>
+                                    Climate Conditions
+                                </h4>
+                                <div class="input-group">
+                                    <label for="temperature">Temperature</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="temperature" name="temperature" min="-10" max="50" step="1" required>
+                                        <span class="input-unit">°C</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>-10</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="temperature"></div>
+                                        </div>
+                                        <span>50</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="humidity">Humidity</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="humidity" name="humidity" min="0" max="100" step="1" required>
+                                        <span class="input-unit">%</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="humidity"></div>
+                                        </div>
+                                        <span>100</span>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="rainfall">Rainfall</label>
+                                    <div class="input-wrapper">
+                                        <input type="number" id="rainfall" name="rainfall" min="0" max="500" step="1" required>
+                                        <span class="input-unit">mm</span>
+                                    </div>
+                                    <div class="input-range">
+                                        <span>0</span>
+                                        <div class="range-bar">
+                                            <div class="range-fill" data-input="rainfall"></div>
+                                        </div>
+                                        <span>500</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span class="btn-text">Get Crop Recommendations</span>
+                            <div class="btn-loader">
+                                <div class="spinner"></div>
+                            </div>
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 20h10"/>
+                                <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="results-card">
+                    <div class="card-header">
+                        <h3>Crop Recommendations</h3>
+                        <div class="results-status" id="resultsStatus"></div>
+                    </div>
+                    
+                    <div class="results-content" id="resultsContent">
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M7 20h10"/>
+                                    <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                    <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                                </svg>
+                            </div>
+                            <h4>Ready for Analysis</h4>
+                            <p>Enter your soil and climate parameters to receive personalized crop recommendations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section class="features">
+                <h3 class="features-title">How It Works</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6"/>
+                                <path d="m21 12-6-3-6 3-6-3"/>
+                            </svg>
+                        </div>
+                        <h4>Input Parameters</h4>
+                        <p>Enter soil nutrients (N, P, K), pH levels, and climate conditions for accurate analysis</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12l2 2 4-4"/>
+                                <path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                                <path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                                <path d="M12 21c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                                <path d="M12 3c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                            </svg>
+                        </div>
+                        <h4>AI Analysis</h4>
+                        <p>Our machine learning model processes your data to find optimal crop matches</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 20h10"/>
+                                <path d="M10 20c5.5-2.5.8-6.4 3-10"/>
+                                <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/>
+                            </svg>
+                        </div>
+                        <h4>Get Results</h4>
+                        <p>Receive ranked crop suggestions with confidence scores and suitability ratings</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <div class="notification-icon"></div>
+            <div class="notification-message"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
